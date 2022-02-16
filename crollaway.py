@@ -45,9 +45,10 @@ driver.implicitly_wait(10)
 
 
 def gapyeong(a):
+    driver.delete_all_cookies()
     url = "https://www.gp.go.kr/portal/selectGosiList.do?key=2148&not_ancmt_se_code=01"
     driver.get(url)
-    box = driver.find_element_by_id('ipt_lab')
+    box = driver.find_element_by_xpath('/html/body/div/div/div/div[2]/div[2]/div/div[1]/form/fieldset/input[3]')
     btn = driver.find_element_by_xpath(
         '/html/body/div/div/div/div[2]/div[2]/div/div[1]/form/fieldset/input[4]')
     box.send_keys(a)
@@ -67,12 +68,13 @@ def gapyeong(a):
 
 
 def goyang(a):
+    driver.delete_all_cookies()
     url = "http://www.goyang.go.kr/www/link/BD_notice.do"
     driver.get(url)
-    iframe = driver.find_element_by_id("if_notice")
+    iframe = driver.find_element_by_xpath("/html/body/div[3]/article/div[3]/iframe")
     driver.switch_to.frame(iframe)
-    box = driver.find_element_by_name("temp")
-    btn = driver.find_element_by_class_name('btn-bbs-search')
+    box = driver.find_element_by_xpath("/html/body/form/div[1]/fieldset/div/div/input")
+    btn = driver.find_element_by_xpath('/html/body/form/div[1]/fieldset/div/div/span/button')
     box.send_keys(a)
     btn.click()
     html = driver.page_source
@@ -90,9 +92,10 @@ def goyang(a):
 
 
 def gccity(a):
+    driver.delete_all_cookies()
     url = "https://www.gccity.go.kr/portal/saeol/gosi/list.do?mId=0301040000"
     driver.get(url)
-    box = driver.find_element_by_id('searchTxt')
+    box = driver.find_element_by_xpath('/html/body/div[2]/div[6]/section[2]/div[1]/form/div[1]/fieldset/input[1]')
     btn = driver.find_element_by_xpath(
         '/html/body/div[2]/div[6]/section[2]/div[1]/form/div[1]/fieldset/input[2]')
     box.send_keys(a)
@@ -112,6 +115,7 @@ def gccity(a):
 
 
 def gm(a):
+    driver.delete_all_cookies()
     url = "https://www.gm.go.kr/pt/user/nftcBbs/BD_selectNftcBbsList.do?q_nftcBbsCode=1001"
     driver.get(url)
     box = driver.find_element_by_id('q_searchVal')
@@ -134,6 +138,7 @@ def gm(a):
 
 
 def gjcity(a):
+    driver.delete_all_cookies()
     url = "https://www.gjcity.go.kr/portal/saeol/gosi/list.do?mId=0202010000"
     driver.get(url)
     box = driver.find_element_by_id('searchTxt')
@@ -157,9 +162,10 @@ def gjcity(a):
 
 
 def guri(a):
+    driver.delete_all_cookies()
     url = "https://www.guri.go.kr/cms/content/view/1676"
     driver.get(url)
-    iframe = driver.find_element_by_name("gosi")
+    iframe = driver.find_element_by_xpath("/html/body/div/div[2]/div[2]/div[2]/p/iframe")
     driver.switch_to.frame(iframe)
     box = driver.find_element_by_id("boardTxt")
     btn = driver.find_element_by_xpath(
@@ -182,12 +188,15 @@ def guri(a):
 
 
 def gunpo(a):
+    driver.delete_all_cookies()
     url = "http://www.gunpo.go.kr/www/contents.do?key=3907"
     driver.get(url)
+    time.sleep(2)
     iframe = driver.find_element_by_xpath(
         "/html/body/div/div/div/main/article/div/iframe")
     driver.switch_to.frame(iframe)
-    box = driver.find_element_by_name("not_ancmt_sj")
+
+    box = driver.find_element_by_xpath("/html/body/form/table[2]/tbody/tr[2]/td[2]/input")
     btn = driver.find_element_by_xpath(
         '/html/body/form/table[2]/tbody/tr[2]/td[2]/a')
     box.send_keys(a)
@@ -208,6 +217,7 @@ def gunpo(a):
 
 
 def gimpo(a):
+    driver.delete_all_cookies()
     url = "https://www.gimpo.go.kr/portal/ntfcPblancList.do?key=1004&cate_cd=1&searchCnd=40900000000"
     driver.get(url)
     box = driver.find_element_by_id('searchKrwd')
@@ -230,11 +240,12 @@ def gimpo(a):
 
 
 def nyj(a):
+    driver.delete_all_cookies()
     url = "https://www.nyj.go.kr/main/185?space=main_board_gonggo"
     driver.get(url)
-    box = driver.find_element_by_id('search_word')
-    btn = driver.find_element_by_class_name(
-        'action_search')
+    box = driver.find_element_by_xpath('/html/body/div[2]/div[2]/div[2]/section/div/article/div[1]/div/div[6]/form/fieldset/p/input')
+    btn = driver.find_element_by_xpath(
+        '/html/body/div[2]/div[2]/div[2]/section/div/article/div[1]/div/div[6]/form/fieldset/p/button')
     box.send_keys(a)
     btn.click()
     html = driver.page_source
@@ -253,11 +264,12 @@ def nyj(a):
 
 
 def ddc(a):
+    driver.delete_all_cookies()
     url = "https://www.ddc.go.kr/ddc/selectGosiList.do?key=107&not_ancmt_se_code=01"
     driver.get(url)
     box = driver.find_element_by_id('searchKrwd')
-    btn = driver.find_element_by_class_name(
-        'submit')
+    btn = driver.find_element_by_xpath(
+        '/html/body/div/div/div/div[2]/main/article/div[3]/div[1]/form/span/input[1]')
     box.send_keys(a)
     btn.click()
     html = driver.page_source
@@ -276,11 +288,12 @@ def ddc(a):
 
 
 def bucheon(a):
+    driver.delete_all_cookies()
     url = "http://www.bucheon.go.kr/site/homepage/menu/viewMenu?menuid=148002003001"
     driver.get(url)
-    iframe = driver.find_element_by_id("gosiframe")
+    iframe = driver.find_element_by_xpath("/html/body/div[2]/div[2]/div/div[2]/div[2]/iframe")
     driver.switch_to.frame(iframe)
-    box = driver.find_element_by_name("temp")
+    box = driver.find_element_by_xpath("/html/body/form/div[1]/fieldset/div[2]/input[1]")
     box.send_keys(a)
     box.send_keys(Keys.ENTER)
     html = driver.page_source
@@ -299,9 +312,10 @@ def bucheon(a):
 
 
 def seongnam(a):
+    driver.delete_all_cookies()
     url = "https://www.seongnam.go.kr/notice/publicNotice.do?menuIdx=1000499&returnURL=%2Fmain.do"
     driver.get(url)
-    iframe = driver.find_element_by_name("iframePublicNotice")
+    iframe = driver.find_element_by_xpath("/html/body/div[2]/div[2]/div/div[2]/div[2]/div[3]/iframe")
     driver.switch_to.frame(iframe)
     box = driver.find_element_by_xpath('/html/body/form/div[4]/p/input')
     btn = driver.find_element_by_xpath(
@@ -324,12 +338,13 @@ def seongnam(a):
 
 
 def suwon(a):
+    driver.delete_all_cookies()
     url = "https://www.suwon.go.kr/sw-www/www04/www04-06.jsp"
     driver.get(url)
     iframe = driver.find_element_by_xpath(
         "/html/body/div[3]/div[2]/div/main/article/div/div[1]/iframe")
     driver.switch_to.frame(iframe)
-    box = driver.find_element_by_name('temp')
+    box = driver.find_element_by_xpath('/html/body/form/div/div/div[1]/div/input')
     btn = driver.find_element_by_xpath(
         '/html/body/form/div/div/div[1]/div/span[2]/button')
     box.send_keys(a)
@@ -350,11 +365,12 @@ def suwon(a):
 
 
 def siheung(a):
+    driver.delete_all_cookies()
     url = "https://www.siheung.go.kr/main/saeol/gosi/list.do?mId=0401040000"
     driver.get(url)
-    box = driver.find_element_by_id('searchTxt')
-    btn = driver.find_element_by_name(
-        'searchBt')
+    box = driver.find_element_by_xpath('/html/body/div[2]/div[2]/section[2]/div[1]/form/div[2]/fieldset/ul/li[2]/input')
+    btn = driver.find_element_by_xpath(
+        '/html/body/div[2]/div[2]/section[2]/div[1]/form/div[2]/fieldset/ul/li[3]/input')
     box.send_keys(a)
     btn.click()
     html = driver.page_source
@@ -373,12 +389,13 @@ def siheung(a):
 
 
 def ansan(a):
+    driver.delete_all_cookies()
     url = "https://www2.ansan.go.kr/www/common/cntnts/selectContents.do?cntnts_id=C0001209"
     driver.get(url)
     iframe = driver.find_element_by_xpath(
         "/html/body/div[1]/div[4]/div/main/article/div/div/div/iframe")
     driver.switch_to.frame(iframe)
-    box = driver.find_element_by_name('temp')
+    box = driver.find_element_by_xpath('/html/body/form/div/fieldset[1]/div/div/input')
     btn = driver.find_element_by_xpath(
         '/html/body/form/div/fieldset[1]/div/div/span[2]/button')
     box.send_keys(a)
@@ -399,6 +416,7 @@ def ansan(a):
 
 
 def anseong(a):
+    driver.delete_all_cookies()
     url = "https://www.anseong.go.kr/portal/saeol/gosiList.do?mId=0401040000"
     driver.get(url)
     box = driver.find_element_by_id('searchTxt')
@@ -421,6 +439,7 @@ def anseong(a):
 
 
 def anyang(a):
+    driver.delete_all_cookies()
     url = "https://www.anyang.go.kr/main/selectEminwonList.do?key=263&notAncmtSeCode=01,04&ofr_pageSize=10"
     driver.get(url)
     box = driver.find_element_by_id('searchKrwd')
@@ -444,6 +463,7 @@ def anyang(a):
 
 
 def yangju(a):
+    driver.delete_all_cookies()
     url = "https://www.yangju.go.kr/www/contents.do?key=211"
     driver.get(url)
     iframe = driver.find_element_by_xpath(
@@ -470,6 +490,7 @@ def yangju(a):
 
 
 def yp(a):
+    driver.delete_all_cookies()
     url = "https://www.yp21.go.kr/www/selectBbsNttList.do?bbsNo=5&key=1119"
     driver.get(url)
     box = driver.find_element_by_id('searchKrwd')
@@ -493,6 +514,7 @@ def yp(a):
 
 
 def yeoju(a):
+    driver.delete_all_cookies()
     url = "https://www.yeoju.go.kr/www/jsp/project/gosi/list.jsp"
     driver.get(url)
     box = driver.find_element_by_id('searchText')
@@ -516,6 +538,7 @@ def yeoju(a):
 
 
 def yeoncheon(a):
+    driver.delete_all_cookies()
     url = "https://www.yeoncheon.go.kr/www/selectGosiList.do?key=3393&not_ancmt_se_code=01"
     driver.get(url)
     box = driver.find_element_by_id('ipt_lab')
@@ -538,6 +561,7 @@ def yeoncheon(a):
 
 
 def osan(a):
+    driver.delete_all_cookies()
     url = "https://www.osan.go.kr/portal/saeol/gosi/list.do?mId=0302010000"
     driver.get(url)
     box = driver.find_element_by_id('searchTxt')
@@ -560,9 +584,10 @@ def osan(a):
 
 
 def yongin(a):
+    driver.delete_all_cookies()
     url = "http://www.yongin.go.kr/user/bbs/BD_selectBbsList.do?q_bbsCode=1004&q_clCode=5"
     driver.get(url)
-    box = driver.find_element_by_id('q_searchVal')
+    box = driver.find_element_by_xpath('/html/body/div[3]/div/div/div[3]/div[2]/form/div[1]/div/input[4]')
     btn = driver.find_element_by_xpath(
         '/html/body/div[3]/div/div/div[3]/div[2]/form/div[1]/div/button[1]')
     box.send_keys(a)
@@ -582,12 +607,13 @@ def yongin(a):
 
 
 def uiwang(a):
+    driver.delete_all_cookies()
     url = "https://www.uiwang.go.kr/UWKORINFO0701"
     driver.get(url)
     iframe = driver.find_element_by_xpath(
         "/html/body/div/main/div/section/div[2]/iframe")
     driver.switch_to.frame(iframe)
-    box = driver.find_element_by_class_name('search')
+    box = driver.find_element_by_xpath('/html/body/form/table[2]/tbody/tr/td/table/tbody/tr/td[3]/input')
     btn = driver.find_element_by_xpath(
         '/html/body/form/table[2]/tbody/tr/td/table/tbody/tr/td[4]/a')
     box.send_keys(a)
@@ -608,6 +634,7 @@ def uiwang(a):
 
 
 def ui4u(a):
+    driver.delete_all_cookies()
     url = "https://www.ui4u.go.kr/portal/saeol/gosiList.do?seCode=01&mId=0301040000"
     driver.get(url)
     box = driver.find_element_by_id('searchTxt')
@@ -630,6 +657,7 @@ def ui4u(a):
 
 
 def icheon(a):
+    driver.delete_all_cookies()
     url = "https://www.icheon.go.kr/portal/selectNoticeWebList.do?key=1606&searchNotAncmtSeCd=01"
     driver.get(url)
     box = driver.find_element_by_id('searchKrwd')
@@ -652,6 +680,7 @@ def icheon(a):
 
 
 def paju(a):
+    driver.delete_all_cookies()
     url = "https://www.paju.go.kr/user/board/BD_board.list.do?bbsCd=1022&q_ctgCd=4063"
     driver.get(url)
     box = driver.find_element_by_xpath('/html/body/div[1]/div/article/div[3]/div/form/div[1]/div/fieldset/div/div/div[2]/input')
@@ -675,6 +704,7 @@ def paju(a):
 
 
 def puc(a):
+    driver.delete_all_cookies()
     url = "https://www.puc.or.kr/noticeInfo/noticeInfoList.do"
     driver.get(url)
 
@@ -705,6 +735,7 @@ def puc(a):
 
 
 def pyeongtaek(a):
+    driver.delete_all_cookies()
     url = "https://www.pyeongtaek.go.kr/pyeongtaek/saeol/gosiList.do?seCode=01&mId=0401020000"
     driver.get(url)
     box = driver.find_element_by_id('searchTxt')
@@ -726,12 +757,13 @@ def pyeongtaek(a):
               for _ in splittext))
 
 def pocheon(a):
+    driver.delete_all_cookies()
     url = "https://www.pocheon.go.kr/www/contents.do?key=5175&"
     driver.get(url)
     iframe = driver.find_element_by_id(
         "iframeaction")
     driver.switch_to.frame(iframe)
-    box = driver.find_element_by_class_name('search')
+    box = driver.find_element_by_xpath('/html/body/form/table[2]/tbody/tr/td/table/tbody/tr/td[3]/input')
     btn = driver.find_element_by_xpath(
         '/html/body/form/table[2]/tbody/tr/td/table/tbody/tr/td[4]/a')
     box.send_keys(a)
@@ -751,6 +783,7 @@ def pocheon(a):
               for _ in splittext))
 
 def hanam(a):
+    driver.delete_all_cookies()
     url = "https://www.hanam.go.kr/www/selectGosiList.do?key=171&not_ancmt_se_code=01,03,04"
     driver.get(url)
     box = driver.find_element_by_id('ipt_lab')
@@ -772,11 +805,12 @@ def hanam(a):
               for _ in splittext))
 
 def hscity(a):
+    driver.delete_all_cookies()
     url = "https://www.hscity.go.kr/www/link/BD_notice.do"
     driver.get(url)
-    iframe = driver.find_element_by_id('if_notice')
+    iframe = driver.find_element_by_xpath('/html/body/div[4]/div[2]/div[2]/div[3]/iframe')
     driver.switch_to.frame(iframe)
-    box = driver.find_element_by_name('temp')
+    box = driver.find_element_by_xpath('/html/body/div/form/div/input')
     btn = driver.find_element_by_xpath(
         '/html/body/div/form/div/button')
     box.send_keys(a)
@@ -799,7 +833,7 @@ time.sleep(2)
 print("참고 : 양주시청은 서버가 좋지않아 잘들어가지지 않습니다. 고로 가장 마지막 순서에 두었습니다.")
 what = input("\n검색할 문장 혹은 단어를 입력하세요 : ")
 
-# gapyeong(what)
+gapyeong(what)
 goyang(what)
 gccity(what)
 gjcity(what)
