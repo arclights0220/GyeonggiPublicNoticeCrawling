@@ -12,6 +12,7 @@ import chromedriver_autoinstaller
 from selenium.webdriver.support.ui import Select
 import warnings
 from selenium.webdriver.common.keys import Keys
+import webbrowser
 warnings.filterwarnings(action='ignore')
 
 
@@ -66,6 +67,7 @@ def gapyeong(a):
     except:
         print("\n가평군청 사이트 오류") 
         print("\n" + url)
+        webbrowser.open(url)
         pass
 
 
@@ -88,15 +90,47 @@ def goyang(a):
         search_result = soup.select_one(
             'body > form > div.table-responsible > div > table > tbody > tr:nth-child(1)')
         if not search_result:
-            print("\n고양시청 "+ a + "에 관한 최신공고 : ")
+            print("\n고양시청 고시공고 "+ a + "에 관한 최신공고 : ")
         else:
             onlytext = search_result.getText()
             splittext = onlytext.split()
             del splittext[0:4]
-            print("\n고양시청 " + a + "에 관한 최신공고 : " + ' '.join(str(_)
+            print("\n고양시청 고시공고 " + a + "에 관한 최신공고 : " + ' '.join(str(_)
                 for _ in splittext))
     except:
-        print("\n고양시청 사이트 오류") 
+        print("\n고양시청 사이트 오류")
+        webbrowser.open(url) 
+        print("\n" + url)
+
+def goyang2(a):
+    try:
+        driver.implicitly_wait(15)
+        url = "http://www.goyang.go.kr/www/link/BD_bidding.do"
+        driver.get(url)
+        iframe = driver.find_element_by_xpath(
+            "/html/body/div[3]/article/div[3]/iframe")
+        driver.switch_to.frame(iframe)
+        box = driver.find_element_by_xpath(
+            "/html/body/form/div[1]/fieldset/div/div/input")
+        btn = driver.find_element_by_xpath(
+            '/html/body/form/div[1]/fieldset/div/div/span/button')
+        box.send_keys(a)
+        btn.click()
+        html = driver.page_source
+        soup = BeautifulSoup(html, 'html.parser')
+        search_result = soup.select_one(
+            'body > form > div.table-responsible > div > table > tbody > tr:nth-child(1)')
+        if not search_result:
+            print("\n고양시청 입찰공고 "+ a + "에 관한 최신공고 : ")
+        else:
+            onlytext = search_result.getText()
+            splittext = onlytext.split()
+            del splittext[0:4]
+            print("\n고양시청 입찰공고 " + a + "에 관한 최신공고 : " + ' '.join(str(_)
+                for _ in splittext))
+    except:
+        print("\n고양시청 사이트 오류")
+        webbrowser.open(url) 
         print("\n" + url)
 
 
@@ -124,7 +158,8 @@ def gccity(a):
             print("\n과천시청 " + a + "에 관한 최신공고 : " + ' '.join(str(_)
                 for _ in splittext))
     except:
-        print("\n과천시청 사이트 오류") 
+        print("\n과천시청 사이트 오류")
+        webbrowser.open(url) 
         print("\n" + url)
         pass
 
@@ -152,7 +187,8 @@ def gm(a):
             print("\n광명시청 " + a + "에 관한 최신공고 : " + ' '.join(str(_)
                 for _ in splittext))
     except:
-        print("\n광명시청 사이트 오류") 
+        print("\n광명시청 사이트 오류")
+        webbrowser.open(url) 
         print("\n" + url)
         pass
 
@@ -181,7 +217,8 @@ def gjcity(a):
             print("\n광주시청 " + a + "에 관한 최신공고 : " + ' '.join(str(_)
                 for _ in splittext))
     except:
-        print("\n광주시청 사이트 오류") 
+        print("\n광주시청 사이트 오류")
+        webbrowser.open(url) 
         print("\n" + url)
         pass
 
@@ -214,7 +251,8 @@ def guri(a):
             print("\n구리시청 " + a + "에 관한 최신공고 : " + ' '.join(str(_)
                 for _ in splittext))
     except:
-        print("\n구리시청 사이트 오류") 
+        print("\n구리시청 사이트 오류")
+        webbrowser.open(url) 
         print("\n" + url)
         pass
 
@@ -249,6 +287,7 @@ def gunpo(a):
                 for _ in splittext))
     except:
         print("\n군포시청 사이트 오류") 
+        webbrowser.open(url)
         print("\n" + url)
         pass
 
@@ -277,6 +316,7 @@ def gimpo(a):
                 for _ in splittext))
     except:
         print("\n김포시청 사이트 오류") 
+        webbrowser.open(url)
         print("\n" + url)
         pass
 
@@ -306,6 +346,7 @@ def nyj(a):
                 for _ in splittext))
     except:
         print("\n남양주시청 사이트 오류") 
+        webbrowser.open(url)
         print("\n" + url)
         pass
 
@@ -334,6 +375,7 @@ def ddc(a):
                 for _ in splittext))
     except:
         print("\n동두천시청 사이트 오류") 
+        webbrowser.open(url)
         print("\n" + url)
         pass
 
@@ -366,6 +408,7 @@ def bucheon(a):
                 for _ in splittext))
     except:
         print("\n부천시청 사이트 오류") 
+        webbrowser.open(url)
         print("\n" + url)
         pass
 
@@ -397,6 +440,7 @@ def seongnam(a):
                 for _ in splittext))
     except:
         print("\n성남시청 사이트 오류") 
+        webbrowser.open(url)
         print("\n" + url)
         pass
 
@@ -430,6 +474,7 @@ def suwon(a):
                 for _ in splittext))
     except:
         print("\n수원시청 사이트 오류") 
+        webbrowser.open(url)
         print("\n" + url)
         pass
 
@@ -459,6 +504,7 @@ def siheung(a):
                 for _ in splittext))
     except:
         print("\n시흥시청 사이트 오류") 
+        webbrowser.open(url)
         print("\n" + url)
         pass
 
@@ -490,7 +536,8 @@ def ansan(a):
             print("\n안산시청 " + a + "에 관한 최신공고 : " + ' '.join(str(_)
                 for _ in splittext))
     except:
-        print("\n안산시청 사이트 오류") 
+        print("\n안산시청 사이트 오류")
+        webbrowser.open(url) 
         print("\n" + url)
         pass
 
@@ -519,6 +566,7 @@ def anseong(a):
                 for _ in splittext))
     except:
         print("\n안성시청 사이트 오류") 
+        webbrowser.open(url)
         print("\n" + url)
         pass
 
@@ -548,6 +596,7 @@ def anyang(a):
                 for _ in splittext))
     except:
         print("\n안양시청 사이트 오류") 
+        webbrowser.open(url)
         print("\n" + url)
         pass
 
@@ -580,6 +629,7 @@ def yangju(a):
                 for _ in splittext))
     except:
         print("\n양주시청 사이트 오류") 
+        webbrowser.open(url)
         print("\n" + url)
         pass
 
@@ -609,6 +659,7 @@ def yp(a):
                 for _ in splittext))
     except:
         print("\n양평시청 사이트 오류") 
+        webbrowser.open(url)
         print("\n" + url)
         pass
 
@@ -638,6 +689,7 @@ def yeoju(a):
                 for _ in splittext))
     except:
         print("\n여주시청 사이트 오류") 
+        webbrowser.open(url)
         print("\n" + url)
         pass
 
@@ -666,6 +718,7 @@ def yeoncheon(a):
                 for _ in splittext) + "\n\n")
     except:
         print("\n연천시청 사이트 오류") 
+        webbrowser.open(url)
         print("\n" + url)
         pass
 
@@ -694,6 +747,7 @@ def osan(a):
                 for _ in splittext))
     except:
         print("\n오산시청 사이트 오류") 
+        webbrowser.open(url)
         print("\n" + url)
         pass
 
@@ -722,6 +776,7 @@ def yongin(a):
                 for _ in splittext))
     except:
         print("\n용인시청 사이트 오류") 
+        webbrowser.open(url)
         print("\n" + url)
         pass               
 
@@ -755,6 +810,7 @@ def uiwang(a):
                 for _ in splittext))
     except:
         print("\n의왕시청 사이트 오류") 
+        webbrowser.open(url)
         print("\n" + url)
         pass
 
@@ -783,6 +839,7 @@ def ui4u(a):
                 for _ in splittext))
     except:
         print("\n의정부시청 사이트 오류") 
+        webbrowser.open(url)
         print("\n" + url)
         pass
 
@@ -811,6 +868,7 @@ def icheon(a):
                 for _ in splittext))
     except:
         print("\n이천시청 사이트 오류") 
+        webbrowser.open(url)
         print("\n" + url)
         pass
 
@@ -840,6 +898,7 @@ def paju(a):
                 for _ in splittext))
     except:
         print("\n파주시청 사이트 오류") 
+        webbrowser.open(url)
         print("\n" + url)
         pass
 
@@ -873,6 +932,7 @@ def puc(a):
                 for _ in splittext))
     except:
         print("\n평택도시공사 사이트 오류") 
+        webbrowser.open(url)
         print("\n" + url)
         pass
 
@@ -900,7 +960,8 @@ def pyeongtaek(a):
             print("\n평택시청 " + a + "에 관한 최신공고 : " + ' '.join(str(_)
                 for _ in splittext))
     except:
-        print("\n평택시청 사이트 오류") 
+        print("\n평택시청 사이트 오류")
+        webbrowser.open(url) 
         print("\n" + url)
         pass
 
@@ -933,6 +994,7 @@ def pocheon(a):
                                                             for _ in splittext))
     except:
         print("\n포천시청 사이트 오류") 
+        webbrowser.open(url)
         print("\n" + url)
 
 
@@ -961,6 +1023,7 @@ def hanam(a):
                 for _ in splittext))
     except:
         print("\n하남시청 사이트 오류") 
+        webbrowser.open(url)
         print("\n" + url)
         pass
 
@@ -992,6 +1055,7 @@ def hscity(a):
                 for _ in splittext))
     except:
         print("\n화성시청 사이트 오류") 
+        webbrowser.open(url)
         print("\n" + url)
         pass
 
@@ -999,6 +1063,7 @@ what = input("\n검색할 문장 혹은 단어를 입력하세요 : ")
 
 allprocess = [gapyeong(what),
               goyang(what),
+              goyang2(what),
               gccity(what),
               gjcity(what),
               gm(what),
